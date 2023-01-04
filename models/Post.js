@@ -1,15 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-  title: {
-    type: String,
+  date: {
+    type: Date,
     required: true,
   },
   image: {
-    type: String,
-    require: true,
-  },
-  cloudinaryId: {
     type: String,
     require: true,
   },
@@ -23,7 +19,7 @@ const PostSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   createdAt: {
     type: Date,
@@ -31,5 +27,5 @@ const PostSchema = new mongoose.Schema({
   },
 });
 
-//MongoDB Collection named here - will give lowercase plural of name 
-module.exports = mongoose.model("Post", PostSchema);
+//MongoDB Collection named here - will give lowercase plural of name
+module.exports = mongoose.model('Post', PostSchema);
