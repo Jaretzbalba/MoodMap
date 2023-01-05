@@ -2,19 +2,22 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
-      <h2><%=moment(post.date).format('Do MMMM, YYYY') %></h2>
+      <span><%=moment.utc(post.date).format('Do MMMM, YYYY')%></span>
+      <div class="mood">
+        <h3>Your Mood:</h3>
+        <% for(const [key,value] of Object.entries(post.mood)) {%>
+        <p><%=value%></p>
+        <%}%>
+      </div>
+      <div class="grateful">
+        <h3>What are your grateful for today?</h3>
+        <p><%=post.grateful_text%></p>
+      </div>
+      <div class="looking_forward">
+        <h3>What are your looking forward to?</h3>
+        <p><%=post.looking_forward_text%></p>
+      </div>
       <div class="row justify-content-between">
-        <form
-          class="col-1"
-          action="/post/likePost/<%= post.id %>?_method=PUT"
-          method="POST"
-        >
-          <button
-            class="btn btn-primary fa fa-heart"
-            type="submit"
-          ></button>
-        </form>
-        <h3 class="col-3">Likes: <%= post.likes %></h3>
         <%if(post.user == user.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"

@@ -5,17 +5,22 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  image: {
-    type: String,
-    require: true,
+  mood: {
+    happy: {
+      type: String,
+    },
+    sad: {
+      type: String,
+    },
+    angry: {
+      type: String,
+    },
   },
-  caption: {
+  grateful_text: {
     type: String,
-    required: true,
   },
-  likes: {
-    type: Number,
-    required: true,
+  looking_forward_text: {
+    type: String,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

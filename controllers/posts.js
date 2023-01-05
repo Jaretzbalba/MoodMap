@@ -1,17 +1,29 @@
 const cloudinary = require('../middleware/cloudinary');
 const Post = require('../models/Post');
 const moment = require('moment');
+const mongoose = require('mongoose');
 
 module.exports = {
   getProfile: async (req, res) => {
-    console.log(req.user);
+    console.log(moment().day(1).toDate());
+    console.log(moment().day(7).toDate());
     try {
       //Since we have a session each request (req) contains the logged-in users info: req.user
       //console.log(req.user) to see everything
       //Grabbing just the posts of the logged-in user
-      const posts = await Post.find({ user: req.user.id });
+      // const posts = await Post.find({ user: req.user.id }).sort({ date: 'asc' }).lean();
+      const posts = await Post.aggregate([
+        {
+          $match: {
+            user: mongoose.Schema.Types.ObjectId,
+            date: {
+              $gte: moment().startOf('week').toDate(),
+              $lte: moment().endOf('week').toDate(),
+            },
+          },
+        },
+      ]).sort({ date: 'asc' });
       //Sending post data from mongodb and user data to ejs template
-      console.log(posts);
       res.render('profile.ejs', { posts: posts, user: req.user, moment: moment });
     } catch (err) {
       console.log(err);
@@ -19,7 +31,7 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: 'desc' }).lean();
+      const posts = await Post.find().sort({ date: 'asc' }).lean();
       res.render('feed.ejs', { posts: posts, user: req.user, moment: moment });
     } catch (err) {
       console.log(err);
@@ -32,7 +44,6 @@ module.exports = {
       //http://localhost:2121/post/631a7f59a3e56acfc7da286f
       //id === 631a7f59a3e56acfc7da286f
       const post = await Post.findById(req.params.id);
-      console.log(post);
       res.render('post.ejs', { post: post, user: req.user, moment: moment });
     } catch (err) {
       console.log(err);
@@ -40,10 +51,16 @@ module.exports = {
   },
   createPost: async (req, res) => {
     try {
+      console.log(req.body);
       await Post.create({
         date: req.body.date,
-        caption: req.body.caption,
-        likes: 0,
+        mood: {
+          happy: req.body.happy,
+          sad: req.body.sad,
+          angry: req.body.angry,
+        },
+        grateful_text: req.body.grateful,
+        looking_forward_text: req.body.looking_forward,
         user: req.user.id,
       });
       console.log('Post has been added!');
@@ -52,27 +69,8 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
-    try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log('Likes +1');
-      res.redirect(`/post/${req.params.id}`);
-    } catch (err) {
-      console.log(err);
-    }
-  },
   deletePost: async (req, res) => {
     try {
-      // Find post by id
-      let post = await Post.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
-      // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log('Deleted Post');
       res.redirect('/profile');

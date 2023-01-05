@@ -8,7 +8,7 @@
 
           <li class="col-12 justify-content-center mt-3">
             <a href="/post/<%= posts[i]._id%>">
-              <span><%=moment(posts[i].date).format('Do MMMM, YYYY') %></span>
+              <span><%=moment.utc(posts[i].date).format('Do MMMM, YYYY') %></span>
             </a>
           </li>
           <%}%>

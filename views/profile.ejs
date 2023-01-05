@@ -15,28 +15,94 @@
                   <input type="date" class="form-control" id="date" name="date">
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Caption</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
+                <fieldset>
+                  <legend>How are you feeling today?</legend>
+                  <div>
+                    <input type="checkbox" id="happy" name="happy" value="Happy" />
+                    <label for="happy">Happy</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="sad" name="sad" value="Sad" />
+                    <label for="sad">Sad</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="angry" name="angry" value="Angry" />
+                    <label for="angry">Angry</label>
+                  </div>
+                </fieldset>
+                  <!-- <ul class="list-unstyled">
+                    <div class="row">
+                      <li class="col m-3">
+                        <button class="btn" type="reset">
+                          <i class="fa-regular fa-face-smile fa-2xl m-2 "></i>Happy
+                        </button>
+                      </li>
+                      <li class="col m-3">
+                        <button class="btn" type="reset">
+                          <i class="fa-regular fa-face-frown fa-2xl m-2 "></i><span>Sad</span> 
+                        </button>
+                      </li>
+                      <li class="col m-3">
+                        <button class="btn" type="reset">
+                          <i class="fa-regular fa-face-angry fa-2xl m-2 "></i>Angry
+                        </button>
+                      </li>
+                      <li class="col m-3">
+                        <button class="btn" type="reset">
+                          <i class="fa-regular fa-face-meh fa-2xl m-2 "></i>Neutral                        
+                        </button>
+                      </li>
+                    <div class="row">  
+                      <li class="col m-3">
+                        <button class="btn" type="reset">
+                          <i class="fa-regular fa-face-kiss-wink-heart fa-2xl m-2 "></i>Loving
+                        </button>
+                      </li>
+                      <li class="col m-3">
+                        <button class="btn" type="reset">
+                          <i class="fa-regular fa-face-tired fa-2xl m-2 "></i>Tired                       
+                        </button>
+                      </li>
+                      <li class="col m-3">
+                        <button class="btn" type="reset">
+                          <i class="fa-regular fa-face-grin-beam fa-2xl m-2 "></i>Excited
+                        </button>
+                      </li>
+                      <li class="col m-3">
+                        <button class="btn" type="reset">
+                          <li class="col m-3"><i class="fa-regular fa-face-sad-tear fa-2xl m-2 "></i>Awful</li></div>
+                        </button>
+                      </li>
+                  </ul> -->
               </div>
+              <div class="mb-3">
+                <label for="grateful" class="form-label">What are your grateful for today?</label>
+                <textarea class="form-control" id="grateful" name="grateful"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="looking-forward" class="form-label">What are your looking forward to?</label>
+              <textarea class="form-control" id="looking-forward" name="looking_forward"></textarea>
+          </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
             </form>
           </div>
       </div>
       <div class="col-6">
+        <h3>Current Week Entries: <br><%=moment().day(1).format('MMM Do')%> - <%=moment().day(7).format('MMM Do')%></h3>
         <ul class="row list-unstyled justify-content-center">
           <% for(var i=0; i<posts.length; i++) {%>
             <%if(posts[i].user == user.id){ %>
   
             <li class="col-12 mt-3 justify-content-center">
               <a href="/post/<%= posts[i]._id%>">
-                <span><%=moment(posts[i].date).format('Do MMMM, YYYY') %></span>
+                <span><%=moment.utc(posts[i].date).format('Do MMMM, YYYY') %></span>
               </a>
             </li>
             <%}%>
           <% } %>
           </ul>
         <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+          <a class="btn btn-primary" href="/feed">View all Entries</a>
         </div>  
       </div>  
     </div>
