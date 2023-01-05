@@ -1,7 +1,6 @@
-<%- include('partials/nav') -%>
 <%- include('partials/header') -%>
 
-<div class="container">
+<body class="body-bg container min-vh-100">
   <div class="row mt-5">
       <div class="col-6">
           <div>
@@ -94,7 +93,7 @@
             <%if(posts[i].user == user.id){ %>
   
             <li class="col-12 mt-3 justify-content-center">
-              <a href="/post/<%= posts[i]._id%>">
+              <a class="text-decoration-none" href="/post/<%= posts[i]._id%>">
                 <span><%=moment.utc(posts[i].date).format('Do MMMM, YYYY') %></span>
               </a>
             </li>
@@ -106,6 +105,6 @@
         </div>  
       </div>  
     </div>
-  </div>
-</div>
+  </body>
+
 <%- include('partials/footer') -%>

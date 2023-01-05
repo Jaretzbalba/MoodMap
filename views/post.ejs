@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="container">
+<body class="body-bg container min-vh-100">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <span><%=moment.utc(post.date).format('Do MMMM, YYYY')%></span>
@@ -19,15 +19,8 @@
       </div>
       <div class="row justify-content-between">
         <%if(post.user == user.id){ %>
-        <form
-          action="/post/deletePost/<%= post.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
-          <button
-            class="btn btn-primary fa fa-trash"
-            type="submit"
-          ></button>
+        <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST" class="col-3">
+          <button class="btn btn-primary fa fa-trash" type="submit"></button>
         </form>
         <%}%>
       </div>
@@ -37,18 +30,10 @@
     </div>
 
     <div class="col-6 mt-5">
-      <a
-        class="btn btn-primary"
-        href="/profile"
-        >Return to Profile</a
-      >
-      <a
-        class="btn btn-primary"
-        href="/feed"
-        >Return to Feed</a
-      >
+      <a class="btn btn-primary" href="/profile">Return to Profile</a>
+      <a class="btn btn-primary" href="/feed">Return to Feed</a>
     </div>
   </div>
-</div>
+</body>
 
 <%- include('partials/footer') -%>
