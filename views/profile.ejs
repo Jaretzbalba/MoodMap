@@ -1,10 +1,11 @@
 <%- include('partials/header') -%>
 
-<body class="body-bg container min-vh-100">
+<body class="body-bg container min-vh-100 text-color">
   <div class="row mt-5">
       <div class="col-6">
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
+              <a href="/logout" class="btn btn-primary btn-logout">Logout</a>
           </div>
           <div class="mt-5">
             <h2>Add an entry</h2>
@@ -93,7 +94,7 @@
             <%if(posts[i].user == user.id){ %>
   
             <li class="col-12 mt-3 justify-content-center">
-              <a class="text-decoration-none" href="/post/<%= posts[i]._id%>">
+              <a class="text-decoration-none text-color" href="/post/<%= posts[i]._id%>">
                 <span><%=moment.utc(posts[i].date).format('Do MMMM, YYYY') %></span>
               </a>
             </li>

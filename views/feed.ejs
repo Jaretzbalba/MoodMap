@@ -6,7 +6,7 @@
           <%if(posts[i].user == user.id){ %>
 
           <li class="col-12 justify-content-center mt-3">
-            <a class="text-decoration-none" href="/post/<%= posts[i]._id%>">
+            <a class="text-decoration-none text-color" href="/post/<%= posts[i]._id%>">
               <span><%=moment.utc(posts[i].date).format('Do MMMM, YYYY') %></span>
             </a>
           </li>
