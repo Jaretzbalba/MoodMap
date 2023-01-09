@@ -2,6 +2,7 @@
   --main-color: rgb(30, 75, 75);
   --secondary-color: rgb(90, 200, 175);
   --button-color: white;
+  --button-profile: rgb(10, 141, 141);
   --border-radius: 10px;
   --border: none;
   --button-background-color: rgb(90, 200, 175);
@@ -13,7 +14,7 @@
 
 .body-bg {
   background-color: var(--main-color);
-  background-image: linear-gradient(315deg, var(--main-color) 0%, var(--secondary-color) 74%);
+  background-image: linear-gradient(250deg, var(--main-color) 0%, var(--secondary-color) 74%);
 }
 
 .btn-primary {
@@ -27,8 +28,8 @@
   box-shadow: inset 0 0 0 20rem var(--main-color);
 }
 
-.btn-logout {
-  background-color: var(--main-color);
+.btn-profile {
+  background-color: var(--button-profile);
 }
 
 h1 {

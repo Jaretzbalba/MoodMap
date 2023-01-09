@@ -1,13 +1,13 @@
-<%- include('partials/header') -%>
+<%- include('partials/header_nav') -%>
 
 <body class="body-bg container min-vh-100 text-color">
   <div class="row mt-5">
-      <div class="col-6">
+      <div class="col-md-6">
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
-              <a href="/logout" class="btn btn-primary btn-logout">Logout</a>
+              <a href="/logout" class="btn btn-primary btn-profile">Logout</a>
           </div>
-          <div class="mt-5">
+          <div class="mt-4">
             <h2>Add an entry</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
@@ -30,50 +30,7 @@
                     <label for="angry">Angry</label>
                   </div>
                 </fieldset>
-                  <!-- <ul class="list-unstyled">
-                    <div class="row">
-                      <li class="col m-3">
-                        <button class="btn" type="reset">
-                          <i class="fa-regular fa-face-smile fa-2xl m-2 "></i>Happy
-                        </button>
-                      </li>
-                      <li class="col m-3">
-                        <button class="btn" type="reset">
-                          <i class="fa-regular fa-face-frown fa-2xl m-2 "></i><span>Sad</span> 
-                        </button>
-                      </li>
-                      <li class="col m-3">
-                        <button class="btn" type="reset">
-                          <i class="fa-regular fa-face-angry fa-2xl m-2 "></i>Angry
-                        </button>
-                      </li>
-                      <li class="col m-3">
-                        <button class="btn" type="reset">
-                          <i class="fa-regular fa-face-meh fa-2xl m-2 "></i>Neutral                        
-                        </button>
-                      </li>
-                    <div class="row">  
-                      <li class="col m-3">
-                        <button class="btn" type="reset">
-                          <i class="fa-regular fa-face-kiss-wink-heart fa-2xl m-2 "></i>Loving
-                        </button>
-                      </li>
-                      <li class="col m-3">
-                        <button class="btn" type="reset">
-                          <i class="fa-regular fa-face-tired fa-2xl m-2 "></i>Tired                       
-                        </button>
-                      </li>
-                      <li class="col m-3">
-                        <button class="btn" type="reset">
-                          <i class="fa-regular fa-face-grin-beam fa-2xl m-2 "></i>Excited
-                        </button>
-                      </li>
-                      <li class="col m-3">
-                        <button class="btn" type="reset">
-                          <li class="col m-3"><i class="fa-regular fa-face-sad-tear fa-2xl m-2 "></i>Awful</li></div>
-                        </button>
-                      </li>
-                  </ul> -->
+                  
               </div>
               <div class="mb-3">
                 <label for="grateful" class="form-label">What are your grateful for today?</label>
@@ -83,26 +40,27 @@
               <label for="looking-forward" class="form-label">What are your looking forward to?</label>
               <textarea class="form-control" id="looking-forward" name="looking_forward"></textarea>
           </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+          <div class="pb-3">             
+             <button type="submit" class="btn btn-primary btn-profile" value="Upload">Submit</button>
+          </div>
             </form>
           </div>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 text-center">
         <h3>Current Week Entries: <br><%=moment().day(1).format('MMM Do')%> - <%=moment().day(7).format('MMM Do')%></h3>
-        <ul class="row list-unstyled justify-content-center">
+        <ul class="list-unstyled row">
           <% for(var i=0; i<posts.length; i++) {%>
             <%if(posts[i].user == user.id){ %>
-  
-            <li class="col-12 mt-3 justify-content-center">
+            <li class="mt-3 col-3 col-md-12">
               <a class="text-decoration-none text-color" href="/post/<%= posts[i]._id%>">
-                <span><%=moment.utc(posts[i].date).format('Do MMMM, YYYY') %></span>
+                <span><%=moment.utc(posts[i].date).format('Do MMM, YYYY') %></span>
               </a>
             </li>
             <%}%>
           <% } %>
           </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">View all Entries</a>
+        <div class="pb-3">
+          <a class="btn btn-primary btn-profile" href="/feed">View all Entries</a>
         </div>  
       </div>  
     </div>

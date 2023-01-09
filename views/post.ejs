@@ -1,5 +1,5 @@
-<%- include('partials/header') -%>
-<body class="body-bg container min-vh-100">
+<%- include('partials/header_nav') -%>
+<body class="body-bg container min-vh-100 text-color">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <span><%=moment.utc(post.date).format('Do MMMM, YYYY')%></span>
@@ -29,9 +29,9 @@
       <p><%= post.caption %></p>
     </div>
 
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+    <div class="col-6 pb-3 text-center">
+      <a class="btn btn-primary btn-profile m-3" href="/profile">Return to Profile</a>
+      <a class="btn btn-primary btn-profile m-3" href="/feed">Return to Feed</a>
     </div>
   </div>
 </body>
