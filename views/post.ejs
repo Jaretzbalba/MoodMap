@@ -1,7 +1,7 @@
 <%- include('partials/header_nav') -%>
 <body class="body-bg container min-vh-100 text-color d-flex flex-column">
   <div class="row justify-content-center mt-5">
-    <div class="col-6">
+    <div class="col-12">
       <span><%=moment.utc(post.date).format('Do MMMM, YYYY')%></span>
       <div class="mood">
         <h3>Your Mood:</h3>
@@ -25,11 +25,7 @@
         <%}%>
       </div>
     </div>
-    <div class="col-3 mt-5">
-      <p><%= post.caption %></p>
-    </div>
-
-    <div class="col-6 pb-3 text-center">
+    <div class="col-12 pb-3 text-center">
       <a class="btn btn-primary btn-profile m-3" href="/profile">Return to Profile</a>
       <a class="btn btn-primary btn-profile m-3" href="/feed">Return to Feed</a>
     </div>

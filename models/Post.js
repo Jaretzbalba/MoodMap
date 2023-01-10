@@ -15,6 +15,21 @@ const PostSchema = new mongoose.Schema({
     angry: {
       type: String,
     },
+    stressed: {
+      type: String,
+    },
+    anxious: {
+      type: String,
+    },
+    excited: {
+      type: String,
+    },
+    neutral: {
+      type: String,
+    },
+    tired: {
+      type: String,
+    },
   },
   grateful_text: {
     type: String,
