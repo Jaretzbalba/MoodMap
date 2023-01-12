@@ -42,7 +42,7 @@ Add the following entries to the environment variable file (.env)
 ```bash
   PORT = 4000
   # MongoDB
-  MONGO_URI = MONGODB-URI-PLACEHOLDER
+  DB_STRING = MONGODB-URI-PLACEHOLDER
 
 ```
 

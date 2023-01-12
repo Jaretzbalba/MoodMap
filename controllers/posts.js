@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 
 module.exports = {
   getProfile: async (req, res) => {
-    console.log(moment().day(1).toDate());
-    console.log(moment().day(7).toDate());
+    console.log(moment().startOf('week').toDate());
+    console.log(moment().endOf('week').toDate());
     try {
       //Since we have a session each request (req) contains the logged-in users info: req.user
       //console.log(req.user) to see everything
