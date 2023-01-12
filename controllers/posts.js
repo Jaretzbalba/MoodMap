@@ -16,7 +16,7 @@ module.exports = {
             user: mongoose.Schema.Types.ObjectId,
             date: {
               $gte: moment().day(1).startOf('day').toDate(),
-              $lte: moment().day(8).endOf('day').toDate(),
+              $lte: moment().day(7).endOf('day').toDate(),
             },
           },
         },
