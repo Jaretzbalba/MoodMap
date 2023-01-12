@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 
 module.exports = {
   getProfile: async (req, res) => {
-    console.log(moment().startOf('week').toDate());
-    console.log(moment().endOf('week').toDate());
     try {
       //Since we have a session each request (req) contains the logged-in users info: req.user
       //console.log(req.user) to see everything
@@ -17,8 +15,8 @@ module.exports = {
           $match: {
             user: mongoose.Schema.Types.ObjectId,
             date: {
-              $gte: moment().startOf('week').toDate(),
-              $lte: moment().endOf('week').toDate(),
+              $gte: moment().day(0).startOf('day').toDate(),
+              $lte: moment().day(6).endOf('day').toDate(),
             },
           },
         },
