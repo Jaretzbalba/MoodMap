@@ -48,20 +48,12 @@ module.exports = {
     }
   },
   createPost: async (req, res) => {
+    console.log(req.body);
     try {
       console.log(req.body);
       await Post.create({
         date: req.body.date,
-        mood: {
-          happy: req.body.happy,
-          sad: req.body.sad,
-          angry: req.body.angry,
-          stressed: req.body.stressed,
-          anxious: req.body.anxious,
-          excited: req.body.excited,
-          neutral: req.body.neutral,
-          tired: req.body.tired,
-        },
+        mood: req.body.mood,
         grateful_text: req.body.grateful,
         looking_forward_text: req.body.looking_forward,
         user: req.user.id,

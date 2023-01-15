@@ -5,9 +5,13 @@
       <span><%=moment.utc(post.date).format('Do MMMM, YYYY')%></span>
       <div class="mood">
         <h3>Your Mood:</h3>
-        <% for(const [key,value] of Object.entries(post.mood)) {%>
-        <p><%=value%></p>
-        <%}%>
+        <ul>
+          <% for(let i = 0; i < post.mood.length; i++) {%>
+          <li>
+            <span><%= post.mood[i] %></span>
+          </li>
+          <% } %>
+        </ul>
       </div>
       <div class="grateful">
         <h3>What are your grateful for today?</h3>

@@ -1,11 +1,11 @@
 <%- include('partials/header_nav') -%>
 
 <body class="body-bg container min-vh-100 text-color d-flex flex-column">
-  <div class="row mt-5">
-      <div class="col-md-6">
+  <div class="row">
+      <div class="col-md-6 card profile-card mt-3">
+        <div class="card-body">
           <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <a href="/logout" class="btn btn-primary btn-profile">Logout</a>
+            <p><strong>Welcome, </strong> <%= user.userName %>!</p>
           </div>
           <div class="mt-4">
             <h2>Add an entry</h2>
@@ -15,39 +15,45 @@
                   <input type="date" class="form-control" id="date" name="date">
               </div>
               <div class="mb-3">
-                <fieldset>
+                <fieldset class="row">
                   <legend>How are you feeling today?</legend>
-                  <div>
-                    <input type="checkbox" id="happy" name="happy" value="Happy" />
+                  <div class="col-4 col-lg-3">
+                    <input type="checkbox" id="happy" name="mood" value="Happy" class="checkbox" />
                     <label for="happy">Happy</label>
                   </div>
-                  <div>
-                    <input type="checkbox" id="sad" name="sad" value="Sad" />
+                  <div class="col-4 col-lg-3">
+                    <input type="checkbox" id="sad" name="mood" value="Sad" class="checkbox" />
                     <label for="sad">Sad</label>
                   </div>
-                  <div>
-                    <input type="checkbox" id="angry" name="angry" value="Angry" />
+                  <div class="col-4 col-lg-3">
+                    <input type="checkbox" id="angry" name="mood" value="Angry" class="checkbox" />
                     <label for="angry">Angry</label>
                   </div>
-                  <div>
-                    <input type="checkbox" id="stressed" name="stressed" value="Stressed" />
+                  <div class="col-4 col-lg-3">
+                    <input type="checkbox" id="stressed" name="mood" value="Stressed" class="checkbox" />
                     <label for="stressed">Stressed</label>
                   </div>
-                  <div>
-                    <input type="checkbox" id="anxious" name="anxious" value="Anxious" />
+                  <div class="col-4 col-lg-3">
+                    <input type="checkbox" id="anxious" name="mood" value="Anxious" class="checkbox" />
                     <label for="anxious">Anxious</label>
-                  </div>
-                  <div>
-                    <input type="checkbox" id="excited" name="excited" value="Excited" />
+                  </div> 
+                  <div class="col-4 col-lg-3">
+                    <input type="checkbox" id="excited" name="mood" value="Excited" class="checkbox" />
                     <label for="excited">Excited</label>
                   </div>
-                  <div>
-                    <input type="checkbox" id="neutral" name="neutral" value="Neutral" />
+                  <div class="col-4 col-lg-3">
+                    <input type="checkbox" id="neutral" name="mood" value="Neutral" class="checkbox" />
                     <label for="neutral">Neutral</label>
                   </div>
-                  <div>
-                    <input type="checkbox" id="tired" name="tired" value="Tired" />
+                  <div class="col-4 col-lg-3">
+                    <input type="checkbox" id="tired" name="mood" value="Tired" class="checkbox" />
                     <label for="tired">Tired</label>
+                  </div>
+                  <div>
+                    <input class="checkbox" type="checkbox" id="checker">
+                    <label class="label cursor-pointer"></label>
+                    <span class="label-text">*Add custom mood*</span>
+                    <input class="input input-bordered" type="text" name="mood" id="userInput" disabled="disabled" placeholder="mood">
                   </div>
                 </fieldset>
                   
@@ -61,12 +67,13 @@
               <textarea class="form-control" id="looking-forward" name="looking_forward"></textarea>
           </div>
           <div class="pb-3">             
-             <button type="submit" class="btn btn-primary btn-profile" value="Upload">Submit</button>
+            <button type="submit" class="btn btn-primary btn-profile" value="Upload">Submit</button>
           </div>
             </form>
           </div>
+        </div>
       </div>
-      <div class="col-md-6 text-center">
+      <div class="col-md-6 text-center mt-3">
         <h3>Current Week Entries: <br><%=moment().day(1).format('MMM Do')%> - <%=moment().day(7).format('MMM Do')%></h3>
         <ul class="list-unstyled row">
           <% for(var i=0; i<posts.length; i++) {%>

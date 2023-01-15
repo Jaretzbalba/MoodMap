@@ -3,6 +3,7 @@
   --secondary-color: rgb(90, 200, 175);
   --button-color: white;
   --button-profile: rgb(10, 141, 141);
+  --card-background-color: rgb(123, 193, 176);
   --border-radius: 10px;
   --border: none;
   --button-background-color: rgb(90, 200, 175);
@@ -13,7 +14,7 @@
 }
 
 .body-bg {
-  background-color: var(--main-color);
+  background-color: var(--secondary-color);
   background-image: linear-gradient(250deg, var(--main-color) 0%, var(--secondary-color) 74%);
 }
 
@@ -34,4 +35,8 @@
 
 h1 {
   font-size: 40px;
+}
+
+.profile-card {
+  background-color: var(--card-background-color);
 }
