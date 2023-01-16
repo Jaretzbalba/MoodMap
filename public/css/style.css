@@ -40,3 +40,7 @@ h1 {
 .profile-card {
   background-color: var(--card-background-color);
 }
+
+.entry-card {
+  background-color: var(--card-background-color);
+}

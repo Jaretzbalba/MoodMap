@@ -5,12 +5,15 @@
   <ul class="row list-unstyled">
     <% for(var i=0; i<posts.length; i++) {%>
       <%if(posts[i].user == user.id){ %>
-
-      <li class="g-col-12 justify-content-center mt-3">
-        <a class="text-decoration-none text-color" href="/post/<%= posts[i]._id%>">
-          <span><%=moment.utc(posts[i].date).format('Do MMM, YYYY') %></span>
-        </a>
-      </li>
+        <div class="col-12">
+          <div class="entry-card card col-4 col-md-3 col-lg-2 m-auto">
+            <a class="text-decoration-none text-color" href="/post/<%= posts[i]._id%>">
+              <li class="my-1 m-auto">
+                <span><%=moment.utc(posts[i].date).format('M-DD-YYYY') %></span>
+              </li>
+            </a>
+          </div>
+        </div>
       <%}%>
     <% } %>
   </ul>
