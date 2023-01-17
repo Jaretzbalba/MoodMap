@@ -1,8 +1,8 @@
 # Mood Map
 
-Mood Map is an mental health focused app built to track your daily mood patterns to help map out a better life.
+Mood Map is a mental health-focused app built to track your daily mood patterns to help map out a better life.
 
-Users can log in to access their own personal profile containing their daily mood logs. Prompts to access their current mood and reflect on their current emotions will help users be more aware and present of their mental state in order to make positive progress.
+Users can log in to access their own personal profiles containing their daily mood logs. Prompts to assess their current mood and reflect on their current emotions will help users be more aware and present in their mental state in order to make positive progress.
 
 ## Screenshots
 
